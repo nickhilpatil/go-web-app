@@ -6,9 +6,9 @@ import (
 )
 
 func homePage(w http.ResponseWriter, r *http.Request) {
-	// Set content type explicitly
+	// Set content type explicitly to ensure correct MIME type
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	// Render the home html page from static folder
+	// Render the home html page from the static folder
 	http.ServeFile(w, r, "static/home.html")
 }
 
@@ -34,10 +34,10 @@ func contactPage(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	// Add a root route
-	http.HandleFunc("/", homePage) // Serve the home page for the root
+	// Handle the root route
+	http.HandleFunc("/", homePage) // The root ("/") route now serves the home page.
 
-	// Handle other pages
+	// Handle other routes
 	http.HandleFunc("/home", homePage)
 	http.HandleFunc("/courses", coursePage)
 	http.HandleFunc("/about", aboutPage)
